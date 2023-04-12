@@ -1,11 +1,12 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-  int numbers[5] = {0};
+  int numbers[5] = {1, 2, 3, 4, 5};
   numbers[0] = 123;
   for (int i = 0; i<5; i++) {
-    cout << numbers[i] << endl;
+    std::cout << numbers[i] << std::endl;
   }
+  std::cout << *numbers << std::endl;
+  std::cout << numbers[2] << " " << *(numbers + 2) << std::endl;
   return 0;
 }
