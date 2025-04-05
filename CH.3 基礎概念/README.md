@@ -29,21 +29,21 @@
 程式原始碼 (source code) 是用某種程式語言撰寫的文字檔，包含了程式的原始碼。要將原始碼編譯成執行檔 (executable file) 讓電腦可以執行，需要以下步驟：
 
 1. 預處理器 (preprocessor)：處理原始碼中的巨集 (macro) 定義。
-2. 編譯器 (compiler)：將原始碼編譯成機器碼。
-3. 組譯器 (assembler)：將機器碼組合成執行檔。
-4. 連結器 (linker)：將程式的各個模組連結成執行檔。
+2. 編譯器 (compiler)：將原始碼編譯成組合語言 (assembly language)。
+3. 組譯器 (assembler)：將組合語言編譯成機器碼。
+4. 連結器 (linker)：將各個模組連結成執行檔。
 5. 載入器 (loader)：將執行檔載入記憶體，讓程式可以運行。
 
 ![how to compile a program](image.png)
 
-編譯器 (compiler) 是一種程式，它會將程式碼編譯成機器碼，也就是電腦可以執行的指令。
+編譯器 (compiler) 是一種程式，它會將程式碼編譯成組合語言，也就是電腦可以理解的指令。
 
 編譯器的工作流程通常包含以下步驟：
 
 1. 語法分析 (Syntax analysis)：檢查程式碼的語法是否正確。
 2. 語意分析 (Semantic analysis)：檢查程式碼的語意是否合理。
-3. 程式碼生成 (Code generation)：將程式碼轉換成機器碼。
-4. 組譯 (assembler)：將機器碼組合成執行檔。  
+3. 程式碼生成 (Code generation)：將程式碼轉換成組合語言。
+4. 組譯 (assembler)：將組合語言編譯成機器碼。  
 
 編譯器的輸出通常是一個執行檔，也就是一個可以被電腦執行的檔案。
 
