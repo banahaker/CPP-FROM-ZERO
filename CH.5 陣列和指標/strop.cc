@@ -9,7 +9,7 @@ size_t strlen(const char* str){
 }
 
 int strcmp(const char *f, const char *s) {
-  int i=0;
+  size_t i=0;
   while (i <= strlen(f)) {
     if (f[i] != s[i]) {
       return (f[i] - s[i]);
