@@ -128,7 +128,7 @@ int main() {
 
 *   **`using namespace std;`** 這句話的意思是：「**接下來，我會使用 `std` 這個標準品牌的所有工具，你直接用就對了，不用我每次都喊全名。**」
 
-如果沒有這行，你之後要用「在螢幕上顯示文字」這個工具時，就必須寫成 `std::cout`，非常囉嗦。有了這行，你就可以直接寫 `cout`，方便多了。
+如果沒有這行，你之後要用「在螢幕上顯示文字」這個工具時，就必須寫成 `std::cout`。有了這行，你就可以直接寫 `cout`，相對較為簡潔。
 
 > **一句話比喻：** 為了方便，你先跟廚房助手說好：「等下我喊『打蛋器』，指的就是『標準牌』的那個，不用再問了！」
 
@@ -191,3 +191,346 @@ int main() {
 ---
 
 恭喜你！你已經成功解讀了你的第一個 C++ 程式。程式設計就是這樣，把一個大目標，拆解成一行行電腦能懂的、精確無比的指令。接下來，試著修改雙引號裡的文字，看看會發生什麼事吧！
+
+## C++ 中的變數
+
+程式中的變數 (variable) 是一個可以儲存資料的記憶體位置。好，聽起來有點難懂，基本上你可以把它當成一個裝「值」的容器，可以把值放進去也可以隨時更改他的值。
+
+*   **`int a;`**:宣告變數 `a` 的類型為 `int` (integer, 整數)。
+*   **`int a = 10;`**:宣告變數 `a` 的類型為 `int`，並指定初始值為 `10`。
+*   **`int a = 10;`**:宣告變數 `a` 的類型為 `int`，並指定初始值為 `10`。
+
+```cpp
+int a = 10;
+std::cout << a << std::endl;
+a = 20;
+std::cout << a << std::endl;
+```
+
+範例程式的第一行，我們宣告 (declare) 了一個新變數 `a` 並且給他一個值 `10` (使用 `=` 給值)，接著我們把它使用 `cout` 輸出。接著我們更改了 `a` 的值至 `20` (使用 `=` 給值)，然後再次使用 `cout` 輸出。可以發現，只有在宣告時需要指定變數的種類 (型別, type)，其他時候都不需要指定。然而在後續的操作該變數的型別不會也不能被改變。因此若我們將一個浮點數值放進去，會將它轉換成整數 (直接將小數部分移除)，而在某些情況下程式將會直接出錯。
+
+### 變數的型別
+如上前段所述，所有變數在宣告時，都需要指定他的型別 (type)。以下為常見的資料型態:
+1. 整數 (int): 如 `int a = 10;`
+2. 浮點數 (float): 如 `float b = 3.14;`
+3. 布林值 (bool): 如 `bool c = true;`
+4. 字元 (char): 字元就是指一個符號 (character) 像是英文字母、數字、特殊符號等，在使用時用單引號 `'` 包起來，如 `char d = 'a';`
+
+除了使用前段方式一次宣告一個變數，也可用逗號分隔一次宣告多個同型別變數，可選擇是否要給予初始值。
+
+```cpp
+int a = 10, b, c = 30;
+char d = 'a', e = 'b', f = 'c';
+float g, h;
+```
+
+宣告後我們該怎麼是用變數？很簡單直接叫他的名字。
+
+```cpp
+std::cout << a << std::endl;
+```
+
+像上面這段範例就能成功地將 a 這個變數的值印出來，這就是 C++ 中的變數。
+
+### Identifiers (變數名稱)
+
+在 C++ 中,變數名稱 (identifier) 是一個由字母、數字、下劃線 (`_`) 組成的字串，並且必須以字母或下劃線開頭，而且不能包含數字。大小寫不同的識別字是不同的識別字。
+
+```cpp
+int a = 10;
+int _a = 20;
+int a_ = 30;
+int a1 = 40;
+```
+
+## 運算符與表達式 (operator and expression)
+### 運算子
+運算子，用於對變數和數值進行操作。舉個例子，我們可以將兩個整數相加並解將 assign 給一個變數，如下。
+
+```cpp
+int a = 1 + 2; // now a is equal to 3 
+```
+除了對數值直接操作，也可用於變數操作或是混用
+
+```cpp
+int a = 1;
+int b = 2;
+int c = a + b; // now c is equal to 3
+int d = a + b + 3; // now d is equal to 6
+```
+
+C++ 中的運算子可以分為下算術運算子 (arithmetic operator)、指定運算子 (assignment operator)、比較運算子 (comparison operator)、邏輯運算子 (logical operator) 和位元運算子 (bitwise operator) 等
+
+#### 算術運算子
+下面是一些常見的算術運算子：
+
+- `+` 加法
+- `-` 減法
+- `*` 乘法
+- `/` 除法
+- `%` 取模（求餘數）
+- `++` 自增
+- `--` 自減
+
+下面是一個使用這些運算子的範例：
+
+```c++
+int x = 10;
+int y = 3;
+
+int sum = x + y; // 13
+int difference = x - y; // 7
+int product = x * y; // 30
+int quotient = x / y; // 3
+int remainder = x % y; // 1
+
+x++; // x 的值增加 1
+y--; // y 的值減少 1
+```
+
+#### 指定運算子
+指定運算子，用於將值指定到變數中，如下
+
+- `=` 賦值
+- `+=` 加法賦值
+- `-=` 減法賦值
+- `*=` 乘法賦值
+- `/=` 除法賦值
+- `%=` 取模（求餘數）賦值
+
+下面是一個使用這些運算子的範例:
+
+```c++
+int x = 10;
+int y = 3;
+
+x += y; // x 的值增加 3
+x -= y; // x 的值減少 3
+x *= y; // x 的值乘以 3
+x /= y; // x 的值除以 3
+x %= y; // x 的值取模（求餘數） 3
+
+// 也可以直接把他們賦值給變數
+x = x += y; // x 的值增加 3
+std::cout << y%x << std::endl; // 0
+```
+
+#### 比較運算子
+比較運算子用於比較兩個數值的大小，如下
+
+- `==` 等於
+- `!=` 不等於
+- `<` 小於
+- `>` 大於
+- `<=` 小於等於
+- `>=` 大於等於
+
+```cpp
+int x = 10;
+int y = 3;
+std::cout << (x == y) << std::endl; // 0 (x 等於 y 不成立因此為 0)
+std::cout << (x != y) << std::endl; // 1 (x 不等於 y 成立因此為 1)
+
+// 也用於流程控制中如 while, if, for 等
+if (x > y) {
+  std::cout << "x is greater than y" << std::endl;
+}
+
+while (x > y) {
+  std::cout << "x is greater than y" << std::endl;
+  x--;
+}
+
+// 也可以直接把他們賦值給變數
+x = x == y; // x 等於 y 不成立因此為 0
+```
+
+#### 邏輯運算子
+有了比較運算子，邏輯運算子就可以用來進行邏輯運算，如下
+
+- `&&` 與
+- `||` 或
+- `!` 非
+
+```cpp
+int x = 10;
+int y = 3;
+std::cout << (x > y && x < 20) << std::endl; // 1 (x 大於 y 且 x 小於 20 成立因此為 1)
+std::cout << (x > y || x < 20) << std::endl; // 1 (x 大於 y 或 x 小於 20 成立因此為 1)
+std::cout << !(x > y) << std::endl; // 0 (x 大於 y 不成立因此為 0)
+```
+
+## 流程控制 (control flow)
+
+學會邏輯和比較運算子後，在 C++ 中，可以使用 `if` 、 `else` 、 `else if` 、 `switch` 等來控制程式的執行流程，這些是流程控制的基本概念。
+
+### if/else
+`if/else` 是 C++ 當中最重要的流程控制方式之一，用於控制程式的執行流程。基本的結構如下。若括號中的條件成立，則執行後面的程式
+
+```cpp
+if (condition) expression;
+```
+
+範例如下
+
+```cpp
+if (x > y) std::cout << "x is greater than y" << std::endl;
+```
+
+假如需要執行多項事務，可以使用 `{}` 來包起來，這樣就可以執行多項事務了
+
+```cpp
+if (x > y) {
+  std::cout << "x is greater than y" << std::endl;
+  std::cout << "x is greater than y" << std::endl;
+  std::cout << "x is greater than y" << std::endl;
+}
+```
+
+加上 `else` 以及 `else if` 就能進行多項判斷，下面是一個使用 `if/else` 的範例，`else if` 並非一定需要出現，若只有一項判斷可以僅使用 `if/else` 完成。
+
+```cpp
+if (x > y) {
+  std::cout << "x is greater than y" << std::endl; // 若 x 大於 y 則印出這句話
+} else if (x < y) { // 若前項條件不成立，則進行下一項條件
+  std::cout << "x is less than y" << std::endl; // 若 x 小於 y 則印出這句話
+} else { // 若前兩項條件都不成立，則進行下一項條件
+  std::cout << "x is equal to y" << std::endl;
+}
+```
+### switch
+
+`switch` 也是一種流程控制方式，用於控制程式的執行流程。基本的結構如下。
+
+在每個 `case` 語句後面，你需要使用 `break` 語句來結束 `switch` 語句。否則，程式會繼續執行下一個 `case` 語句中的程式碼。
+
+在 `switch` 語句中，如果你省略了 `break` 語句，則程式會繼續執行下一個 `case` 語句中的程式碼，直到遇到 `break` 語句或者 `switch` 語句結束為止。這稱為“穿透”（fall through）。
+
+
+```cpp
+switch (expression) {
+  case value1:
+    // 如果 expression 等於 value1，則執行這裡的程式碼
+    break;
+  case value2:
+    // 如果 expression 等於 value2，則執行這裡的程式碼
+    break;
+  default:
+    // 如果 expression 不等於任何 case 中指定的值，則執行這裡的程式碼
+    break;
+}
+```
+
+我們用於數來判斷是否為偶數來做個範例
+
+```cpp
+int x = 10;
+
+switch (x % 2) {
+  case 0:
+    std::cout << "x is even" << std::endl;
+    break;
+  case 1:
+    std::cout << "x is odd" << std::endl;
+    break;
+  default:
+    std::cout << "x is not a number" << std::endl;
+    break;
+}
+```
+
+## 迴圈
+
+迴圈是一種程式控制結構，它可以重複執行一段程式碼。在 C++ 中，有三種常見的迴圈：for 迴圈、while 迴圈和 do-while 迴圈。
+
+### for loop
+for 迴圈的語法如下。
+
+這個迴圈會先執行初始化，然後檢查條件是否成立。如果成立，則執行迴圈內的程式碼，然後更新變數並再次檢查條件。如果條件仍然成立，則繼續執行迴圈內的程式碼。當條件不再成立時，迴圈結束。
+
+```cpp
+for (初始化; 條件; 更新) {
+    // 要重複執行的程式碼
+}
+```
+
+設定初始值 => 判斷執行條件 (True) → 內容程式碼 → 控制程式碼
+                       (False) → 跳出迴圈 
+                
+
+```cpp
+for(int i=0;i<5;i++){
+    cout<<i<<endl;
+}
+```
+宣告 i=0 => 判斷 i<5 (true) → 輸出 i (0)→ i++ (i=1)
+
+=>  判斷 i<5 (true) → 輸出 i (1)→ i++ (i=2)
+
+=>  判斷 i<5 (true) → 輸出 i (2)→ i++ (i=3)
+
+=>  判斷 i<5 (true) → 輸出 i (3)→ i++ (i=4)
+
+=>  判斷 i<5 (true) → 輸出 i (4)→ i++ (i=5)
+
+=>  判斷 i<5 (false) → 跳出迴圈
+
+### while loop
+除了 for 迴圈之外，還有另一種迴圈稱為 while 迴圈。下面是一個簡單的 while 迴圈例子，它會從 1 到 5 輸出數字：
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 1;
+    while (i <= 5) {
+        cout << i << endl;
+        i++;
+    }
+    return 0;
+}
+```
+
+在這個例子中，迴圈變數 `i` 被初始化為 `1`。當 `i` 的值小於等於 `5` 時，迴圈將繼續執行。在每次迴圈執行後，`i` 的值都會增加 `1`。因此，這個程式會輸出數字 `1` 到 `5`。
+
+### break/continue
+`break` 用於跳出迴圈，`continue` 用於跳過迴圈的當前迴圈迭代並繼續下一次迴圈迭代
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 10; i++) {
+        if (i == 5) {
+            break; // 跳出迴圈
+        }
+        cout << i << endl;
+    }
+    return 0;
+}
+```
+
+在這個程式碼中，當 `i` 為 `5` 時,`break` 會跳出迴圈,因此程式碼會輸出數字 `0` 到 `4`。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 10; i++) {
+        if (i == 5) {
+            continue; // 跳過當前迴圈迭代並繼續下一次迴圈迭代
+        }
+        cout << i << endl;
+    }
+    return 0;
+}
+```
+
+在這個程式碼中，當 `i` 為 `5` 時,`continue` 會跳過當前迴圈迭代並繼續下一次迴圈迭代，因此程式碼會輸出數字 `0` 到 `4` 和 `6` 到 `9`。(`5` 的那次迴圈迭代被跳過因此不會有輸出。)
+
+## 結論
+
+在 C++ 中，迴圈是一個非常重要的概念，可以用來控制程式的執行過程。使用迴圈可以讓程式更加簡單、高效且易於維護。
